@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <style>
+  	a:hover,a:focus{    outline: none;    text-decoration: none;}
+.tab .nav-tabs{    border: 1px solid #dc005a;}
+.tab .nav-tabs li{    margin: 0;}
+.tab .nav-tabs li a{    font-size: 12px;    color: #fff;    background: #4B4C4D;    margin: 0;    padding: 11px 25px;    border-radius: 0;
+    border: none;    border-right: 1px solid #dcdcdc;    text-transform: uppercase;    position: relative;}
+.tab .nav-tabs li a:hover{    border-top: none;    border-bottom: none;    border-right-color: #dcdcdc;}
+.tab .nav-tabs li.active a,.tab .nav-tabs li.active a:hover{    color: #fff;    border: none;    background: #dc005a;    border-right: 1px solid #dcdcdc;
+}
+.tab .nav-tabs li.active a:before{    content: "";    width: 58%;    height: 1px;    background: #fff;    position: absolute;
+    top: 0;    left: 0;    right: 0;    margin: 0 auto;}
+.tab .nav-tabs li.active a:after{    content: "";    border-top: 10px solid #dc005a;    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;    position: absolute;    bottom: -10px;    left: 43%;}
+.tab .tab-content{    font-size: 13px;    color: #999898;    line-height: 25px;    background: #fff;    padding: 20px;
+    border: 0px solid #dc005a;    border-top: none;}
+.tab .tab-content h3{    font-size: 24px;    color: #999898;    margin-top: 0;}
+@media only screen and (max-width: 480px){    .tab .nav-tabs li{        width: 100%;        text-align: center;    }
+    .tab .nav-tabs li.active a,    .tab .nav-tabs li.active a:after,    .tab .nav-tabs li.active a:hover{        border: none;    }
+}
+@media only screen and (max-width: 600px){    .tab .nav-tabs li a{    font-size: 9px;    padding: 9px 15px;}
+}
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="span12">
+        	<div class="tab" role="tabpanel">
+            <ul class="nav nav-tabs" id="myTabs">
+              <li class="active"><a href="#mysql" data-toggle="tab">MYSQL SERVER</a></li>
+              <li><a href="#web" data-toggle="tab">WEB SERVER</a></li>
+              <li><a href="#ha" data-toggle="tab">HA SERVER</a></li>
+	      <li><a href="#cpu" data-toggle="tab">ALL SERVER CPU DATA</a></li>
+	      <li><a href="#cache" data-toggle="tab">CACHING SERVER</a></li>
+            </ul>
+            
+            <div class="tab-content">
+              <div class="tab-pane active" id="mysql" data-src="">
+                  <iframe src="http://192.168.100.123:19999/mysql.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                            
+                </div>
+              <div class="tab-pane" id="web" data-src="">
+                  <iframe src="http://192.168.100.123:19999/webserver.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                      
+                </div>
+              <div class="tab-pane" id="ha" data-src=" ">
+                  <iframe src="http://192.168.100.123:19999/ha.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                </div>
+
+		<div class="tab-pane active" id="cpu" data-src="">
+                  <iframe src="http://192.168.100.123:19999/all_cpu.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                            
+                </div>
+		<div class="tab-pane active" id="cache" data-src="">
+                  <iframe src="http://192.168.100.123:19999/varnish.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                            
+                </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+      <script>
+    	$('#myTabs').bind('show', function(e) {  
+    paneID = $(e.target).attr('href');
+    src = $(paneID).attr('data-src');
+    // if the iframe hasn't already been loaded once
+    if($(paneID+" iframe").attr("src")=="")
+    {
+        $(paneID+" iframe").attr("src",src);
+    }
+});
+
+    </script>
+    
+</body>
+</html>

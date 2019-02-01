@@ -1,0 +1,100 @@
+
+<!doctype html>
+
+<html>
+
+<head>
+   <meta charset="utf-8">
+
+   <title>test video add</title>
+
+   <!-- optimize mobile versions -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- The Flowplayer skin -->
+   <link rel="stylesheet" href="//releases.flowplayer.org/7.2.1/skin/skin.css">
+
+   <!-- Minimal styling for this standalone page (can be removed) -->
+   <style>
+   body {
+      font-family: "myriad pro", tahoma, verdana, arial, sans-serif;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+   }
+   #content {
+      margin: 50px auto;
+      max-width: 982px;
+   }
+   
+</style>
+
+   <!-- CSS for this demo -->
+   <link rel="stylesheet" href="/media/css/demos/ads/ads.css">
+   
+   
+   <!-- Flowplayer-->
+   <script src="//releases.flowplayer.org/7.2.1/flowplayer.min.js"></script>
+
+   <!-- recommended: the hlsjs engine plugin -->
+   <script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.min.js"></script>
+
+
+<!-- load the AdSense assets after the Flowplayer assets -->
+<!-- the IMA SDK -->
+<script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+<!-- your AdSense plugin (at your server) -->
+<script
+    src="//releases.flowplayer.org/asf/flowplayer.com/2.1.9/asf.min.js">
+</script>
+
+
+</head>
+
+<body>
+<div id="content">
+
+<div id="standardvideo" class="flowplayer"></div>
+
+<!-- install the player with ima AdSense configuration -->
+<script>
+flowplayer("#standardvideo", {
+  // configure the AdSense plugin for this player
+  ima: {
+    // must be set when testing your installation, remove or set to false in production
+    // adtest: true,
+
+    // make the Google robots crawl the current page
+    description_url: location.href,
+
+    // adverts configuration
+    ads: [{
+      // mandatory: schedule ad time
+      // here: 3 seconds into the video
+      time: 3,
+
+      // request an advert of type video ads
+      // note: features must be at least 1 minute long for video adverts
+      //       so be careful when setting this globally
+      ad_type: "standardvideo"
+    }]
+  },
+
+  splash: true,
+  ratio: 9/16,
+  clip: {
+    sources: [
+      { type: "application/x-mpegurl",
+        src:  "//edge.flowplayer.org/drive.m3u8" },
+      { type: "video/mp4",
+        src:  "//edge.flowplayer.org/drive.mp4" }
+    ]
+  }
+});
+</script>
+
+
+</div><!--/end content -->
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+function refreshcontent(){
+     var apiBody = new FormData();
+     apiBody.append("partnerid", "ott488");
+		apiBody.append("userid", "0");
+		apiBody.append("countrycode", "IN");
+       $.ajax({
+           type: "POST",
+           async: true,
+           contentType: 'text/plain',
+           //dataType: 'json',
+           
+            headers: {
+            'Authorization': 'Basic ' + btoa('PlanetCastM:p1@netc@$t')
+            },
+           url: "http://ott.planetcast.in:6086/menu",
+           data: apiBody,
+           processData: false,
+           //contentType: false,
+           //contentType: 'text/plain',
+           cache: false,
+           success: function(result){
+          }
+     });
+     
+} 
+
+refreshcontent();
+</script>

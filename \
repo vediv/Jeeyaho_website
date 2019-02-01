@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->:
+
+  <style>
+  
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="span12">
+        	<div class="tab" role="tabpanel">
+            <ul class="nav nav-tabs" id="myTabs">
+              <li class="active"><a href="#mysql" data-toggle="tab">MYSQL SERVER</a></li>
+              <li><a href="#web" data-toggle="tab">WEB SERVER</a></li>
+              <li><a href="#ha" data-toggle="tab">HA SERVER</a></li>
+	      <li><a href="#cpu" data-toggle="tab">ALL SERVER CPU DATA</a></li>
+	      <li><a href="#cache" data-toggle="tab">CACHING SERVER</a></li>
+            </ul>
+            
+            <div class="tab-content">
+              <div class="tab-pane active" id="mysql" data-src="">
+                  <iframe src="http://192.168.100.123:19999/mysql.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                            
+                </div>
+              <div class="tab-pane" id="web" data-src="">
+                  <iframe src="http://192.168.100.123:19999/webserver.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                      
+                </div>
+              <div class="tab-pane" id="ha" data-src=" ">
+                  <iframe src="http://192.168.100.123:19999/ha.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                </div>
+
+		<div class="tab-pane active" id="cpu" data-src="">
+                  <iframe src="http://192.168.100.123:19999/all_cpu.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                            
+                </div>
+		<div class="tab-pane active" id="cache" data-src="">
+                  <iframe src="http://192.168.100.123:19999/varnish.html" width="100%" height="500" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+                            
+                </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+      <script>
+    	$('#myTabs').bind('show', function(e) {  
+    paneID = $(e.target).attr('href');
+    src = $(paneID).attr('data-src');
+    // if the iframe hasn't already been loaded once
+    if($(paneID+" iframe").attr("src")=="")
+    {
+        $(paneID+" iframe").attr("src",src);
+    }
+});
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+# Disable Directory Browsing
+Options All -Indexes
+
+RewriteEngine on
+Options +FollowSymlinks
+RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
+ErrorDocument 404 /jeeyaho/error.php
+RewriteRule ^([^/.]+)/?$ $1.php
+RewriteRule ^watch/([a-zA-Z0-9_-]+)$ watch.php?entryID=$1
+RewriteRule ^liveTv/([a-zA-Z0-9_-]+)$ liveTv.php?entryID=$1
+RewriteRule ^category/([a-zA-Z0-9_-]+)/$ view_type_4.php?$1
+RewriteRule ^channels/([a-zA-Z0-9_-]+)/$ channels.php?$1
+RewriteRule ^search/([a-zA-Z0-9_-]+)/$ search.php?searchtext=$1
+RewriteRule ^ondemand/([0-9]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ ondemand.php?subCatID=$1&CatName=$2&vcatID=$3
+RewriteRule ^ondemand/([0-9]+)/([a-zA-Z0-9_-]+)/$ ondemand.php?subCatID=$1&CatName=$2
+RewriteRule ^payclick/([a-zA-Z0-9_-]+)$ payclick.php?entryID=$1
+RewriteRule ^subcategory/([0-9]+)$ subcategory.php?catid=$1
+
+#RewriteRule ^music/([a-z]+)/([0-9]+)$ music.php?pcname=$1&pcatid=$2
+#RewriteRule ^drama/([a-z]+)/([0-9]+)$ drama.php?pcname=$1&pcatid=$2
+#RewriteRule ^status/([a-zA-Z0-9_-]+)$ paymentStatusNew.php?orderid=$1
+#RewriteRule ^season/([0-9]+)$ season.php?catid=$1
+#RewriteRule ^episode/([0-9]+)$ episode.php?catid=$1
+#RewriteRule ^series/([0-9]+)$ series.php?catid=$1
+RewriteRule  ^language/([a-z-]+)/([0-9]+)$ movies_viewType6.php?catname=$1&catID=$2 [L]
+RewriteRule  ^([a-z-]+)/([0-9]+)$ detail.php?catname=$1&catID=$2 [L]
+RewriteRule  ^([a-z-]+)/([0-9]+)/([a-z-]+)/([0-9]+)$ detail.php?catname=$1&catID=$2&subcatname=$3&subcatID=$4 [L]
+RewriteRule  ^movies/([a-z-]+)/([0-9]+)$ movies_all.php?catname=$1&catID=$2
+RewriteRule  ^music/([a-z-]+)/([0-9]+)$ movies_all.php?catname=$1&catID=$2
+
+
+
+#DirectoryIndex channels.php
+# 1 WEEK
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+#Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+# 3 HOUR
+<FilesMatch "\.(txt|xml|js|css)$">
+#Header set Cache-Control "max-age=10800"
+</FilesMatch>
+
+# NEVER CACHE - notice the extra directives
+<FilesMatch "\.(html|htm|php|cgi|pl)$">
+#Header set Cache-Control "max-age=0, private, no-store, no-cache, must-revalidate"
+</FilesMatch>

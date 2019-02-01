@@ -1,0 +1,4 @@
+<div class="font-size1 font-size16">Refund Policy </div>
+<p class="w3-text-white font-size1 font-size14">If any payment comes by mistake then we will refund the entire payment to the user within 7days from the day we received the information from the bank, but in case of refund of subscription amount user needs lodge complain within 24hrs of payment, after 24hrs & if the content view time exceed 15 mins then no subscription & pay per view amount will be refunded. In case of double payment or anything else like technical error except subscriptions & pay per view amount user will be allowed to lodge complain within 10 days of payment.   </p> 
+ 
+ 
